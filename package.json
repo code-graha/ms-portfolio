@@ -1,0 +1,17 @@
+{
+  "name": "mohit-singh-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio website of Mohit Singh, graphic designer. Crafted and managed by WebGraha.",
+  "scripts": {
+    "build": "npm run build:css && npm run build:html",
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --minify",
+    "build:html": "node scripts/build.mjs",
+    "images": "python scripts/images.py",
+    "og": "node scripts/og.mjs",
+    "dev": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

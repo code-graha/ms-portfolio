@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!--
+  SOURCE TEMPLATE — edit this file, not /index.html.
+  `npm run build` fills the {{TOKENS}} from assets/js/data.js and writes /index.html.
+-->
+<html lang="{{LANG}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary SEO -->
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="author" content="{{NAME}}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="{{URL}}/">
+<link rel="alternate" hreflang="en-IN" href="{{URL}}/">
+<link rel="alternate" hreflang="x-default" href="{{URL}}/">
+
+<!-- Geo -->
+<meta name="geo.region" content="{{COUNTRY_CODE}}">
+<meta name="geo.placename" content="{{LOCATION}}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="{{SHORT_TITLE}}">
+<meta property="og:locale" content="{{LOCALE}}">
+<meta property="og:url" content="{{URL}}/">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta property="og:image:secure_url" content="{{OG_IMAGE}}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{OG_ALT}}">
+<meta property="profile:first_name" content="{{GIVEN_NAME}}">
+<meta property="profile:last_name" content="{{FAMILY_NAME}}">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{DESCRIPTION}}">
+<meta name="twitter:image" content="{{OG_IMAGE}}">
+<meta name="twitter:image:alt" content="{{OG_ALT}}">
+
+<!-- Icons & app -->
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="{{THEME_COLOR}}">
+
+<!-- For AI / answer engines -->
+<link rel="alternate" type="text/markdown" href="llms.txt" title="LLM-readable summary">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+
+<!-- Performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preload" as="image" href="{{LCP_THUMB}}" imagesrcset="{{LCP_SRCSET}}" imagesizes="(min-width: 1536px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<link rel="stylesheet" href="assets/css/styles.css?v={{VERSION}}">
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- Structured data (Person, ProfessionalService, WebSite, ProfilePage, portfolio ImageObjects, FAQPage) -->
+<script type="application/ld+json">
+{{JSONLD}}
+</script>
+</head>
+<body class="bg-white font-sans text-ink antialiased">
+<a href="#main" class="sr-only z-50 rounded-full bg-ink px-4 py-2 text-sm font-bold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
+
+<!-- HEADER (64px + 1px border = 65px; the filter bar sticks right below it) -->
+<header id="header" class="sticky top-0 z-40 border-b border-black/5 bg-white/90 backdrop-blur-md">
+  <div class="mx-auto flex h-16 w-full max-w-[1600px] items-center gap-3 px-4 sm:gap-4 sm:px-6 lg:px-10">
+    <a href="#" id="logo" class="flex shrink-0 items-center gap-2.5" aria-label="{{NAME}} — back to top">
+      <span class="grid h-10 w-10 place-items-center rounded-full bg-ink font-serif text-xl italic text-white" aria-hidden="true">{{INITIALS}}</span>
+      <span class="hidden text-[15px] font-bold tracking-tight sm:block md:hidden xl:block">{{NAME}}<span class="text-coral">.</span></span>
+    </a>
+
+    <nav id="main-nav" class="ml-2 hidden items-center gap-1 md:flex lg:ml-6" aria-label="Main">
+      <a href="#intro" data-nav="intro" class="nav-link rounded-full px-4 py-2.5 text-sm font-semibold text-ink/70 transition hover:bg-mist hover:text-ink">About</a>
+      <a href="#work-anchor" data-nav="work" class="nav-link rounded-full px-4 py-2.5 text-sm font-semibold text-ink/70 transition hover:bg-mist hover:text-ink">Work</a>
+      <a href="#services" data-nav="services" class="nav-link rounded-full px-4 py-2.5 text-sm font-semibold text-ink/70 transition hover:bg-mist hover:text-ink">Services</a>
+      <!--FAQ:START--><a href="#faq" data-nav="faq" class="nav-link rounded-full px-4 py-2.5 text-sm font-semibold text-ink/70 transition hover:bg-mist hover:text-ink">FAQ</a><!--FAQ:END-->
+      <a href="#contact" data-nav="contact" class="nav-link rounded-full px-4 py-2.5 text-sm font-semibold text-ink/70 transition hover:bg-mist hover:text-ink">Contact</a>
+    </nav>
+
+    <div id="search-bar" role="search" class="group ml-auto flex h-11 min-w-0 flex-1 items-center gap-2.5 rounded-full bg-mist px-4 transition focus-within:bg-white focus-within:ring-2 focus-within:ring-ink/80 md:max-w-xs lg:max-w-sm">
+      <i class="fa-solid fa-magnifying-glass text-sm text-ink/50" aria-hidden="true"></i>
+      <label for="search-input" class="sr-only">Search work</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="Search brands, products…" class="w-full min-w-0 bg-transparent text-sm font-medium placeholder:text-ink/45 focus:outline-none">
+      <button id="search-clear" type="button" class="hidden h-6 w-6 shrink-0 place-items-center rounded-full text-xs text-ink/50 hover:bg-black/10 hover:text-ink" aria-label="Clear search"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <kbd id="search-kbd" class="hidden rounded-md border border-black/10 bg-white px-1.5 py-0.5 text-[11px] font-semibold text-ink/40 lg:block">/</kbd>
+    </div>
+
+    <a href="#contact" id="hire-btn" class="hidden h-11 shrink-0 items-center gap-2 rounded-full bg-coral px-5 text-sm font-bold text-white shadow-sm transition hover:bg-coral-dark md:flex">
+      Hire me <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+    </a>
+
+    <button id="menu-btn" type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-mist transition hover:bg-black/10 md:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-black/5 bg-white md:hidden">
+    <nav class="mx-auto flex max-w-[1600px] flex-col gap-1 px-4 py-3 sm:px-6" aria-label="Mobile">
+      <a href="#intro" data-nav="intro" class="nav-link-m rounded-2xl px-4 py-3 text-base font-semibold text-ink/70">About</a>
+      <a href="#work-anchor" data-nav="work" class="nav-link-m rounded-2xl px-4 py-3 text-base font-semibold text-ink/70">Work</a>
+      <a href="#services" data-nav="services" class="nav-link-m rounded-2xl px-4 py-3 text-base font-semibold text-ink/70">Services</a>
+      <!--FAQ:START--><a href="#faq" data-nav="faq" class="nav-link-m rounded-2xl px-4 py-3 text-base font-semibold text-ink/70">FAQ</a><!--FAQ:END-->
+      <a href="#contact" data-nav="contact" class="nav-link-m rounded-2xl px-4 py-3 text-base font-semibold text-ink/70">Contact</a>
+      <a href="#contact" class="mt-2 flex items-center justify-center gap-2 rounded-full bg-coral px-5 py-3 text-sm font-bold text-white">Hire me <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- INTRO -->
+  <section id="intro" aria-labelledby="intro-title" class="mx-auto w-full max-w-[1600px] px-4 pt-8 sm:px-6 lg:min-h-[560px] lg:px-10 lg:pt-12">
+    <div class="grid h-full gap-6 lg:grid-cols-12">
+      <div class="flex flex-col justify-center lg:col-span-7">
+        <div class="flex items-center gap-4">
+          <div class="relative">
+            <span class="block h-16 w-16 sm:h-20 sm:w-20">{{AVATAR}}</span>
+            <span class="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full bg-coral text-[11px] text-white ring-4 ring-white" aria-hidden="true"><i class="fa-solid fa-pen-nib"></i></span>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-ink/50">Hello, I'm</p>
+            <p class="text-lg font-bold">{{NAME}}</p>
+            <p class="mt-1 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
+              <span class="relative flex h-2 w-2" aria-hidden="true"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
+              {{STATUS}}
+            </p>
+          </div>
+        </div>
+        <h1 id="intro-title" class="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl xl:text-6xl">
+          Graphic designer crafting <span class="font-serif text-[1.12em] font-normal italic text-coral">packaging, campaigns</span> &amp; brands that sell on the shelf and the scroll.
+        </h1>
+        <p class="mt-5 max-w-xl text-base leading-relaxed text-ink/60">{{BIO}}</p>
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <a href="#work-anchor" class="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white transition hover:bg-black">Browse the work <i class="fa-solid fa-arrow-down text-xs" aria-hidden="true"></i></a>
+          <a href="mailto:{{EMAIL}}" class="inline-flex items-center gap-2 rounded-full bg-mist px-6 py-3.5 text-sm font-bold transition hover:bg-black/10"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Email me</a>
+          {{CV_BUTTON}}
+          {{SOCIALS_LIGHT}}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 self-center sm:gap-4 lg:col-span-5">
+        <div class="rounded-3xl bg-mist p-5 sm:p-6">
+          <i class="fa-solid fa-layer-group text-ink/40" aria-hidden="true"></i>
+          <p class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">{{STAT_DESIGNS}}<span class="text-coral">+</span></p>
+          <p class="mt-1 text-sm font-medium text-ink/55">Designs in this portfolio</p>
+        </div>
+        <div class="rounded-3xl bg-coral p-5 text-white sm:p-6">
+          <i class="fa-solid fa-handshake-simple text-white/70" aria-hidden="true"></i>
+          <p class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">{{STAT_BRANDS}}</p>
+          <p class="mt-1 text-sm font-medium text-white/80">Brands designed for</p>
+        </div>
+        <div class="rounded-3xl bg-ink p-5 text-white sm:p-6">
+          <i class="fa-solid fa-shapes text-white/50" aria-hidden="true"></i>
+          <p class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">{{STAT_CATS}}</p>
+          <p class="mt-1 text-sm font-medium text-white/60">Design disciplines</p>
+        </div>
+        <div class="flex flex-col justify-between rounded-3xl border border-black/10 p-5 sm:p-6">
+          <p class="text-sm font-semibold text-ink/55">Toolkit</p>
+          <ul class="mt-4 flex flex-wrap gap-1.5" aria-label="Tools">{{TOOLS}}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <div id="work-anchor" class="mx-auto mt-14 w-full max-w-[1600px] px-4 sm:px-6 lg:px-10">
+    <div class="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
+      <h2 id="work-title" class="text-3xl font-extrabold tracking-tight sm:text-4xl">Selected <span class="font-serif font-normal italic text-coral">work</span></h2>
+      <p class="max-w-md text-sm text-ink/55">{{STAT_DESIGNS}} designs across packaging, e-commerce banners, social media and logos for {{STAT_BRANDS}} brands.</p>
+    </div>
+  </div>
+
+  <section id="work" aria-labelledby="work-title">
+    <div class="sticky top-[65px] z-30 bg-white/95 backdrop-blur-md">
+      <div class="mx-auto flex w-full max-w-[1600px] items-center gap-3 px-4 py-3 sm:px-6 lg:px-10">
+        <div id="filter-chips" class="no-scrollbar flex flex-1 gap-2 overflow-x-auto" role="toolbar" aria-label="Filter by category">{{CHIPS}}</div>
+        <span id="result-count" class="hidden shrink-0 text-sm font-medium text-ink/50 lg:block" aria-live="polite">{{RESULT_COUNT}}</span>
+      </div>
+    </div>
+
+    <div class="mx-auto w-full max-w-[1600px] px-4 pb-6 pt-4 sm:px-6 lg:px-10">
+      <div id="grid" class="columns-2 gap-3 sm:gap-4 md:columns-3 lg:columns-4 2xl:columns-5">{{GRID}}</div>
+
+      <div id="empty-state" class="hidden py-24 text-center">
+        <div class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-mist text-xl text-ink/40"><i id="empty-icon" class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
+        <p id="empty-title" class="mt-4 text-lg font-bold"></p>
+        <p id="empty-text" class="mt-1 text-sm text-ink/55"></p>
+        <button id="clear-filters" type="button" class="mt-5 rounded-full bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-black">Show all work</button>
+      </div>
+
+      <div id="load-more-wrap" class="flex justify-center pt-6">
+        <button id="load-more" type="button" class="inline-flex items-center gap-2 rounded-full bg-mist px-7 py-3.5 text-sm font-bold transition hover:bg-black/10">
+          <i class="fa-solid fa-plus text-xs" aria-hidden="true"></i> <span id="load-more-label">{{LOAD_MORE}}</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section id="clients" aria-labelledby="clients-title" class="mx-auto mt-16 w-full max-w-[1600px] px-4 sm:px-6 lg:px-10">
+    <div class="rounded-[2rem] bg-mist px-6 py-10 sm:px-10">
+      <h2 id="clients-title" class="text-center text-xs font-bold uppercase tracking-[0.2em] text-ink/45">Brands I've designed for · tap to filter</h2>
+      <div class="mt-7 grid grid-cols-2 items-center gap-x-6 gap-y-6 text-center text-ink/55 lg:grid-cols-4">
+        <button type="button" data-brand="Medimade Wellness" class="brand-link rounded-2xl py-2 text-2xl font-extrabold tracking-tight transition hover:text-ink">Medimade<span class="block text-[11px] font-semibold uppercase tracking-[0.45em]">Wellness</span></button>
+        <button type="button" data-brand="Coronation Herbal" class="brand-link rounded-2xl py-2 text-2xl font-bold lowercase tracking-tight transition hover:text-ink">coronation<span class="block text-xs font-semibold normal-case tracking-normal">Herbal</span></button>
+        <button type="button" data-brand="Earthy Secrets" class="brand-link rounded-2xl py-2 font-serif text-3xl uppercase transition hover:text-ink">Earthy Secrets<span class="block font-sans text-[10px] font-semibold tracking-[0.35em]">Love from nature</span></button>
+        <button type="button" data-brand="Mr. Jerry" class="brand-link rounded-2xl py-2 text-2xl font-extrabold transition hover:text-ink">Mr. Jerry<span class="block text-xs font-semibold">Pet Grooming</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" aria-labelledby="services-title" class="mx-auto mt-16 w-full max-w-[1600px] px-4 sm:px-6 lg:px-10">
+    <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <h2 id="services-title" class="text-3xl font-extrabold tracking-tight sm:text-4xl">What I can <span class="font-serif font-normal italic text-coral">design for you</span></h2>
+      <p class="max-w-sm text-sm text-ink/55">Packaging · E-commerce banners · Social media creatives · Logo &amp; brand identity</p>
+    </div>
+    <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">{{SERVICES}}</div>
+  </section>
+
+  <!-- FAQ (shown only when SITE.showFaq is true in data.js) -->
+  <!--FAQ:START-->
+  <section id="faq" aria-labelledby="faq-title" class="mx-auto mt-16 w-full max-w-[1600px] px-4 sm:px-6 lg:px-10">
+    <div class="grid gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <h2 id="faq-title" class="text-3xl font-extrabold tracking-tight sm:text-4xl">Questions, <span class="font-serif font-normal italic text-coral">answered</span></h2>
+        <p class="mt-3 max-w-sm text-sm leading-relaxed text-ink/55">Quick answers about who I am, what I design and how to work together.</p>
+      </div>
+      <div class="divide-y divide-black/10 border-y border-black/10 lg:col-span-8">{{FAQ}}</div>
+    </div>
+  </section>
+  <!--FAQ:END-->
+
+  <!-- CONTACT -->
+  <section id="contact" aria-labelledby="contact-title" class="mx-auto mt-16 w-full max-w-[1600px] px-4 sm:px-6 lg:px-10">
+    <div class="relative overflow-hidden rounded-[2rem] bg-ink text-white">
+      <div class="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-coral/25 blur-3xl"></div>
+      <div class="pointer-events-none absolute -bottom-40 right-1/4 h-80 w-80 rounded-full bg-coral/15 blur-3xl"></div>
+
+      <div class="relative grid gap-10 px-6 py-12 sm:px-12 sm:py-14 lg:grid-cols-12 lg:gap-14 lg:px-16 lg:py-20">
+        <div class="flex flex-col lg:col-span-7">
+          <span class="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-white/70">
+            <span class="h-1.5 w-1.5 rounded-full bg-coral"></span> Contact
+          </span>
+          <h2 id="contact-title" class="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl xl:text-6xl">Let's make something <span class="font-serif font-normal italic text-coral">people pick up.</span></h2>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-white/60">Launching a product or refreshing a brand? Tell me what you're selling, the formats you need — packaging, banners, social posts or a logo — and your timeline. I'll reply with ideas and a quote.</p>
+
+          <ol class="mt-auto grid gap-3 pt-10 sm:grid-cols-3">
+            <li class="rounded-2xl border border-white/10 p-4">
+              <span class="font-serif text-2xl italic text-coral">01</span>
+              <p class="mt-2 text-sm font-bold">Share your brief</p>
+              <p class="mt-1 text-xs leading-relaxed text-white/50">Product, audience, sizes and deadline.</p>
+            </li>
+            <li class="rounded-2xl border border-white/10 p-4">
+              <span class="font-serif text-2xl italic text-coral">02</span>
+              <p class="mt-2 text-sm font-bold">Review concepts</p>
+              <p class="mt-1 text-xs leading-relaxed text-white/50">First designs, then rounds of feedback.</p>
+            </li>
+            <li class="rounded-2xl border border-white/10 p-4">
+              <span class="font-serif text-2xl italic text-coral">03</span>
+              <p class="mt-2 text-sm font-bold">Get final files</p>
+              <p class="mt-1 text-xs leading-relaxed text-white/50">Print-ready and web-ready exports.</p>
+            </li>
+          </ol>
+        </div>
+
+        <address class="flex flex-col gap-3 not-italic lg:col-span-5">
+          <div class="rounded-3xl bg-white p-6 text-ink sm:p-7">
+            <div class="flex items-center justify-between gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-2xl bg-coral-soft text-coral" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+              <button id="copy-email" type="button" class="inline-flex items-center gap-1.5 rounded-full bg-mist px-3.5 py-2 text-xs font-bold transition hover:bg-black/10"><i class="fa-regular fa-copy" aria-hidden="true"></i> <span>Copy</span></button>
+            </div>
+            <p class="mt-5 text-sm font-semibold text-ink/50">Email me at</p>
+            <a href="mailto:{{EMAIL}}" class="group mt-1 inline-flex items-center gap-2 break-all text-xl font-extrabold tracking-tight transition hover:text-coral sm:text-2xl">
+              {{EMAIL}}<i class="fa-solid fa-arrow-right -rotate-45 text-sm transition group-hover:rotate-0" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+              <i class="fa-solid fa-location-dot text-coral" aria-hidden="true"></i>
+              <p class="mt-4 text-xs font-semibold text-white/50">Based in</p>
+              <p class="mt-0.5 font-bold">{{LOCATION}}</p>
+            </div>
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+              <span class="relative mt-0.5 flex h-3 w-3" aria-hidden="true"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span></span>
+              <p class="mt-4 text-xs font-semibold text-white/50">Availability</p>
+              <p class="mt-0.5 font-bold leading-snug">{{STATUS}}</p>
+            </div>
+          </div>
+          {{PHONE_TILE}}
+          {{SOCIALS_DARK}}
+        </address>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer" class="mx-auto mt-10 w-full max-w-[1600px] px-4 pb-10 sm:px-6 lg:px-10">
+  <div class="grid items-center justify-items-center gap-4 border-t border-black/10 pt-6 text-sm text-ink/50 lg:grid-cols-3">
+    <div class="flex items-center gap-2.5 lg:justify-self-start">
+      <span class="grid h-8 w-8 place-items-center rounded-full bg-ink font-serif text-base italic text-white" aria-hidden="true">{{INITIALS}}</span>
+      <span>© <span id="year">{{YEAR}}</span> {{NAME}} · {{LOCATION}}</span>
+    </div>
+    <p class="order-last text-center font-medium lg:order-none">
+      Crafted and Managed by <a href="{{CREDIT_URL}}" target="_blank" rel="noopener" class="font-bold text-ink/80 underline decoration-coral/40 underline-offset-4 transition hover:text-coral hover:decoration-coral">{{CREDIT_NAME}}</a>
+    </p>
+    <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-medium lg:justify-self-end" aria-label="Footer">
+      <a href="#intro" class="hover:text-ink">About</a><a href="#work-anchor" class="hover:text-ink">Work</a><a href="#services" class="hover:text-ink">Services</a><!--FAQ:START--><a href="#faq" class="hover:text-ink">FAQ</a><!--FAQ:END--><a href="#contact" class="hover:text-ink">Contact</a><a href="#" class="hover:text-ink">Back to top <i class="fa-solid fa-arrow-up ml-1 text-xs" aria-hidden="true"></i></a>
+    </nav>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-3 backdrop-blur-sm sm:p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div id="modal-card" class="relative grid max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-3xl bg-white">
+    <div id="modal-media" class="relative flex items-center justify-center bg-mist">
+      <img id="modal-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" class="w-full object-contain">
+      <button id="modal-prev" type="button" class="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow transition hover:bg-white" aria-label="Previous design"><i class="fa-solid fa-chevron-left text-sm" aria-hidden="true"></i></button>
+      <button id="modal-next" type="button" class="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow transition hover:bg-white" aria-label="Next design"><i class="fa-solid fa-chevron-right text-sm" aria-hidden="true"></i></button>
+      <span id="modal-pos" class="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white"></span>
+    </div>
+    <div id="modal-body" class="flex flex-col p-6 sm:p-8">
+      <div class="flex items-center justify-between">
+        <span id="modal-cat" class="rounded-full bg-coral-soft px-3 py-1 text-xs font-bold text-coral"></span>
+        <button id="modal-close" type="button" class="grid h-10 w-10 place-items-center rounded-full bg-mist transition hover:bg-black/10" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <h2 id="modal-title" class="mt-5 text-3xl font-extrabold tracking-tight"></h2>
+      <p id="modal-client" class="mt-1 text-sm font-medium text-ink/50"></p>
+      <p id="modal-desc" class="mt-5 text-[15px] leading-relaxed text-ink/70"></p>
+      <dl class="mt-6 grid grid-cols-2 gap-4 border-t border-black/10 pt-6 text-sm">
+        <div><dt class="text-ink/45">Format</dt><dd id="modal-format" class="mt-0.5 font-bold"></dd></div>
+        <div><dt class="text-ink/45">Role</dt><dd class="mt-0.5 font-bold">Designer</dd></div>
+      </dl>
+      <div id="modal-more-wrap" class="mt-6">
+        <p class="text-xs font-bold uppercase tracking-[0.15em] text-ink/45">More for this brand</p>
+        <div id="modal-more" class="no-scrollbar mt-3 flex gap-2 overflow-x-auto p-0.5"></div>
+      </div>
+      <div class="mt-auto flex gap-2 pt-8">
+        <a id="modal-open" href="#" target="_blank" rel="noopener" class="flex flex-1 items-center justify-center gap-2 rounded-full bg-ink py-3.5 text-center text-sm font-bold text-white transition hover:bg-black">Open full size <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>
+        <button id="modal-save" type="button" class="grid h-12 w-12 place-items-center rounded-full bg-coral text-white transition hover:bg-coral-dark" aria-label="Save design" aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="pointer-events-none fixed bottom-6 left-1/2 z-[60] -translate-x-1/2 translate-y-4 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white opacity-0 shadow-lg transition duration-300" role="status" aria-live="polite"></div>
+
+<script src="assets/js/data.js?v={{VERSION}}" defer></script>
+<script src="assets/js/templates.js?v={{VERSION}}" defer></script>
+<script src="assets/js/main.js?v={{VERSION}}" defer></script>
+</body>
+</html>

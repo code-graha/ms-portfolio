@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- Rendered to the PNG/ICO icons by `npm run og`. ?mode=circle (transparent) | square (full-bleed) | maskable (safe-zone padding) -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=block" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:512px;height:512px;overflow:hidden;background:transparent}
+  .wrap{width:512px;height:512px;display:grid;place-items:center;position:relative}
+  .mark{display:grid;place-items:center;background:#111;color:#fff;font:italic 'Instrument Serif',serif;position:relative}
+  .circle .mark{width:512px;height:512px;border-radius:50%;font-size:260px}
+  .square .mark{width:512px;height:512px;font-size:250px}
+  .maskable .mark{width:512px;height:512px;font-size:190px}
+  .mark span{transform:translateY(-14px);font-family:'Instrument Serif',serif;font-style:italic}
+  .dot{position:absolute;border-radius:50%;background:#E8402A}
+  .circle .dot{width:96px;height:96px;right:28px;bottom:28px}
+  .square .dot{width:84px;height:84px;right:64px;bottom:64px}
+  .maskable .dot{width:64px;height:64px;right:120px;bottom:120px}
+</style>
+</head>
+<body>
+  <div class="wrap"><div class="mark"><span>ms</span><div class="dot"></div></div></div>
+  <script>
+    const mode = new URLSearchParams(location.search).get('mode') || 'circle';
+    document.body.className = mode;
+  </script>
+</body>
+</html>
